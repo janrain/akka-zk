@@ -46,3 +46,7 @@ object ZkConfigExample extends App {
   actorSystem.scheduler.schedule(1.second, 5.seconds, actorRef, Poke)
 }
 ```
+
+## TODO
+
+* handle node removal
