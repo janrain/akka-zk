@@ -1,4 +1,4 @@
-package me.enkode.zk_akka
+package com.janrain.zkakka
 
 import concurrent._, duration._
 import akka.actor._

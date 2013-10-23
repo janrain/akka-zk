@@ -2,7 +2,7 @@ package me.enkode.zk_akka.example
 
 import concurrent._, duration._
 import akka.actor.{Props, ActorSystem, ActorLogging, Actor}
-import me.enkode.zk_akka.{DefaultDataUnmarshallers, ZkConfigExtension}
+import com.janrain.zkakka.{ZkConfigExtension, DefaultDataUnmarshallers}
 
 object ZkConfigExample extends App {
   case object Poke

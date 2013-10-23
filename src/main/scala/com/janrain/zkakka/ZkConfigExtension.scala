@@ -1,4 +1,4 @@
-package me.enkode.zk_akka
+package com.janrain.zkakka
 
 import scala.concurrent._, duration._
 import scala.util.control.NonFatal
