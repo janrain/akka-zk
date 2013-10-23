@@ -3,6 +3,20 @@ zk-akka-config
 
 ZooKeeper Configured Akka Actors
 
+## Usage
+
+```scala
+resolvers += "Janrain Releases" at "https://janrain.artifactoryonline.com/janrain/janrain-releases"
+
+resolvers += "Janrain Snapshots" at "https://janrain.artifactoryonline.com/janrain/janrain-snapshots"
+
+libraryDependencies += "com.janrain" %% "akka-zk" % "0.1-SNAPSHOT"
+```
+
+Note: These repositories are currently private, and require credentials!
+
+## Example
+
 ```scala
 package me.enkode.zk_akka.example
 
@@ -50,3 +64,5 @@ object ZkConfigExample extends App {
 ## TODO
 
 * handle node removal
+* better error handling
+* configuration of zookeeper connection string
