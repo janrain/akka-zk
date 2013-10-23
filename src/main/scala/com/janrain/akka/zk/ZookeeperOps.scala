@@ -1,4 +1,4 @@
-package com.janrain.zkakka
+package com.janrain.akka.zk
 
 import concurrent._, duration._
 import org.apache.zookeeper.data.Stat

@@ -1,4 +1,4 @@
-package com.janrain.zkakka
+package com.janrain.akka.zk
 
 trait DefaultDataUnmarshallers {
   import ZkConfigExtension.ValueUnmarshaller

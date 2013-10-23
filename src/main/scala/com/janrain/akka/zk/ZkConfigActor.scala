@@ -1,4 +1,4 @@
-package com.janrain.zkakka
+package com.janrain.akka.zk
 
 import concurrent._, duration._
 import akka.actor._
@@ -39,8 +39,10 @@ class ZkConfigActor extends Actor with ActorLogging with Watcher with ZookeeperO
   import ZkConfigExtension._
   import akka.pattern.{ask, pipe}
 
-  val zkTimeout: FiniteDuration = 60.seconds
-  implicit val zk = new ZooKeeper("localhost:2181", zkTimeout.toMillis.toInt, this)
+  val config = context.system.settings.config.getConfig("janrain.akka.zk")
+  val zkTimeout = FiniteDuration(config.getMilliseconds("timeout"), MILLISECONDS).toMillis.toInt
+  val zkConnection = config.getString("connection")
+  implicit val zk = new ZooKeeper(zkConnection, zkTimeout, this)
 
   def running(state: ZkConfigState): Receive = LoggingReceive {
     case subscribe@Subscribe(subscriber, path, andChildren) ⇒

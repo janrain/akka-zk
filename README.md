@@ -18,11 +18,11 @@ Note: These repositories are currently private, and require credentials!
 ## Example
 
 ```scala
-package me.enkode.zk_akka.example
+package com.janrain.akka.zk.example
 
 import concurrent._, duration._
 import akka.actor.{Props, ActorSystem, ActorLogging, Actor}
-import me.enkode.zk_akka.{DefaultDataUnmarshallers, ZkConfigExtension}
+import com.janrain.akka.zk.{ZkConfigExtension, DefaultDataUnmarshallers}
 
 object ZkConfigExample extends App {
   case object Poke
@@ -31,7 +31,7 @@ object ZkConfigExample extends App {
     import ZkConfigExtension._
 
     override def preStart() = {
-      ZkConfigExtension(context.system).subscribe("/test")
+      ZkConfigExtension(context.system).subscribe("/test", andChildren = true)
     }
 
     def waitingForConfig(): Receive = {
@@ -63,6 +63,5 @@ object ZkConfigExample extends App {
 
 ## TODO
 
-* handle node removal
+* handle znode removal
 * better error handling
-* configuration of zookeeper connection string

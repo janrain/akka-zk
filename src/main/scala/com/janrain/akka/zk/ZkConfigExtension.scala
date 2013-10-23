@@ -1,4 +1,4 @@
-package com.janrain.zkakka
+package com.janrain.akka.zk
 
 import scala.concurrent._, duration._
 import scala.util.control.NonFatal
