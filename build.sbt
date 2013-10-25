@@ -4,16 +4,16 @@ name := "akka-zk"
 
 version := "0.1-SNAPSHOT"
 
-scalaVersion := "2.10.2"
+scalaVersion := "2.10.3"
 
 libraryDependencies += "org.apache.zookeeper" % "zookeeper" % "3.4.5" excludeAll(
-  ExclusionRule(name = "jms"),
-  ExclusionRule(name = "jmxtools"),
-  ExclusionRule(name = "jmxri"),
-  ExclusionRule(name = "mail"),
-  ExclusionRule(name = "junit"),
-  ExclusionRule(organization = "log4j"),
-  ExclusionRule(name = "slf4j-log4j12"))
+  ExclusionRule(organization = "javax.jms", name = "jms"),
+  ExclusionRule(organization = "com.sun.jdmk", name = "jmxtools"),
+  ExclusionRule(organization = "com.sun.jmx", name = "jmxri"),
+  ExclusionRule(organization = "javax.mail", name = "mail"),
+  ExclusionRule(organization = "junit", name = "junit"),
+  ExclusionRule(organization = "log4j", name = "log4j"),
+  ExclusionRule(organization = "org.slf4j", name = "slf4j-log4j12"))
 
 libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.2.1"
 
