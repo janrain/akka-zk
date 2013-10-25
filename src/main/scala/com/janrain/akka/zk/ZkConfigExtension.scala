@@ -37,7 +37,7 @@ class ZkConfigExtension(
 
   val logger = LoggerFactory.getLogger(classOf[ZkConfigExtension])
 
-  def subscribe(paths: String*)(implicit context: ActorContext): Unit = paths map { path ⇒ subscribe(path) }
+  def subscribe(paths: Seq[String])(implicit context: ActorContext): Unit = paths map { path ⇒ subscribe(path) }
 
   def subscribe(path: String, andChildren: Boolean = true)(implicit context: ActorContext): Unit = {
     import akka.pattern.{ask, pipe}

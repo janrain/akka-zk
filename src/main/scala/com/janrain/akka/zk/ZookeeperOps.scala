@@ -30,9 +30,10 @@ trait ZookeeperOps { self: Watcher ⇒
   def getChildren(path: String, watch: Boolean = true)(implicit zk: ZooKeeper): Future[Seq[String]] = {
     val childrenPromise = Promise[Seq[String]]()
     zk.getChildren(path, true, new ChildrenCallback {
-      def processResult(rc: Int, path: String, ctx: scala.Any, children: util.List[String]) {
+      def processResult(rc: Int, path: String, ctx: scala.Any, c: util.List[String]) {
         import collection.JavaConversions._
-        childrenPromise.complete(Success(children.toList map { child ⇒ s"$path/$child"} ))
+        val children = if (c == null) Nil else c.toList
+        childrenPromise.complete(Success(children map { child ⇒ s"$path/$child"} ))
       }
     }, None)
     childrenPromise.future
