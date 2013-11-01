@@ -10,7 +10,7 @@ resolvers += "Janrain Releases" at "https://janrain.artifactoryonline.com/janrai
 
 resolvers += "Janrain Snapshots" at "https://janrain.artifactoryonline.com/janrain/janrain-snapshots"
 
-libraryDependencies += "com.janrain" %% "akka-zk" % "0.1-SNAPSHOT"
+libraryDependencies += "com.janrain" %% "akka-zk" % "0.2-SNAPSHOT"
 ```
 
 Note: These repositories are currently private, and require credentials!
