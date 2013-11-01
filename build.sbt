@@ -2,7 +2,7 @@ organization := "com.janrain"
 
 name := "akka-zk"
 
-version := "0.1-SNAPSHOT"
+version := "0.2-SNAPSHOT"
 
 scalaVersion := "2.10.3"
 
