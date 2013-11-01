@@ -19,7 +19,7 @@ trait ZookeeperOps { self: Watcher ⇒
   import ZookeeperOps._
   def getData(path: String, watch: Boolean = true)(implicit zk: ZooKeeper): Future[DataResult] = {
     val resultPromise = Promise[DataResult]()
-    zk.getData(path, true, new DataCallback {
+    zk.getData(path, watch, new DataCallback {
       def processResult(rc: Int, path: String, ctx: scala.Any, data: Array[Byte], stat: Stat) {
         resultPromise.complete(Success(DataResult(path, rc, data, stat)))
       }
@@ -29,7 +29,7 @@ trait ZookeeperOps { self: Watcher ⇒
 
   def getChildren(path: String, watch: Boolean = true)(implicit zk: ZooKeeper): Future[Seq[String]] = {
     val childrenPromise = Promise[Seq[String]]()
-    zk.getChildren(path, true, new ChildrenCallback {
+    zk.getChildren(path, watch, new ChildrenCallback {
       def processResult(rc: Int, path: String, ctx: scala.Any, c: util.List[String]) {
         import collection.JavaConversions._
         val children = if (c == null) Nil else c.toList
