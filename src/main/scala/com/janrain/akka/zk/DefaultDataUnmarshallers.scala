@@ -1,6 +1,8 @@
 package com.janrain.akka.zk
 
 import scala.xml.{XML, Elem}
+import scala.xml.parsing.ConstructingParser
+import scala.io.Source
 
 trait DefaultDataUnmarshallers {
   import ZkConfigExtension.ValueUnmarshaller
@@ -9,7 +11,9 @@ trait DefaultDataUnmarshallers {
   }
 
   implicit object XmlValueUnmarshaller extends ValueUnmarshaller[Elem] {
-    def unmarshal(data: Array[Byte]): Elem = XML.loadString(new String(data))
+    def unmarshal(data: Array[Byte]): Elem = {
+      ConstructingParser.fromSource(Source.fromString(new String(data)), preserveWS = true).document().docElem.asInstanceOf[Elem]
+    }
   }
 }
 
