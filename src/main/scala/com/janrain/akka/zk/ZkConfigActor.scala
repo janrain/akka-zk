@@ -45,7 +45,7 @@ class ZkConfigActor extends Actor with ActorLogging with Watcher with ZookeeperO
   import akka.pattern.pipe
 
   val config = context.system.settings.config.getConfig("janrain.akka.zk")
-  val zkTimeout = FiniteDuration(config.getMilliseconds("timeout"), MILLISECONDS).toMillis.toInt
+  val zkTimeout = FiniteDuration(config.getDuration("timeout", MILLISECONDS), MILLISECONDS).toMillis.toInt
   val zkConnection = config.getString("connection")
   def zk() = new ZooKeeper(zkConnection, zkTimeout, this)
 
