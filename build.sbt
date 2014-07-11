@@ -2,9 +2,11 @@ organization := "com.janrain"
 
 name := "akka-zk"
 
-version := "0.4-SNAPSHOT"
+version := "0.5-SNAPSHOT"
 
-scalaVersion := "2.10.3"
+scalaVersion := "2.11.1"
+
+libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.0.1"
 
 libraryDependencies += "org.apache.zookeeper" % "zookeeper" % "3.4.5" excludeAll(
   ExclusionRule(organization = "javax.jms", name = "jms"),
