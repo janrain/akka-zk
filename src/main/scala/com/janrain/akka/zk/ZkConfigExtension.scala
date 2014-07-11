@@ -42,7 +42,7 @@ class ZkConfigExtension(
   def subscribe(path: String, andChildren: Boolean = true)(implicit context: ActorContext): Unit = {
     import akka.pattern.{ask, pipe}
     val config = context.system.settings.config.getConfig("janrain.akka.zk")
-    implicit val askTimeout = new Timeout(FiniteDuration(config.getMilliseconds("timeout"), MILLISECONDS).toMillis.toInt + 1000)
+    implicit val askTimeout = Timeout(config.getDuration("timeout", MILLISECONDS) + 1000, MILLISECONDS)
     import context.dispatcher
 
     logger.debug(s"${context.self} subscribing to $path")
